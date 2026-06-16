@@ -149,22 +149,38 @@ footer a:hover { color: var(--pw-salmon); }
   </div>
 </footer>
 
+
 <!-- YINK Modal -->
-<div id="yink-modal" style="display:none;position:fixed;inset:0;background:rgba(31,31,31,.85);z-index:9999;align-items:center;justify-content:center;padding:1rem">
-  <div style="background:#fff;width:100%;max-width:1400px;height:90vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.4)">
-    <div style="padding:.8rem 1.2rem;border-bottom:1px solid #e5e5e5;display:flex;justify-content:space-between;align-items:center;background:#fff">
-      <strong style="font-family:Poppins,sans-serif;color:#1f1f1f">Katalog YINK - 450 000+ szablonow PPF</strong>
-      <div style="display:flex;gap:.5rem;align-items:center">
-        <a href="https://data.yinkglobal.com/" target="_blank" rel="noopener" style="font-family:Poppins,sans-serif;font-size:.82rem;color:#666;text-decoration:none;padding:.4rem .8rem;border:1px solid #e5e5e5;border-radius:8px">Otworz w nowej karcie &#8599;</a>
-        <button onclick="closeYinkModal()" style="background:#f0506e;color:#fff;border:0;border-radius:8px;padding:.45rem .85rem;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif">Zamknij</button>
+<div id="yink-modal" style="display:none;position:fixed;inset:0;background:rgba(31,31,31,.85);z-index:9999;align-items:center;justify-content:center;padding:1rem;font-family:Poppins,sans-serif">
+  <div style="background:#fff;width:100%;max-width:1400px;height:92vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+    <div style="padding:.85rem 1.2rem;border-bottom:1px solid #e5e5e5;display:flex;justify-content:space-between;align-items:center;background:#fff;flex-wrap:wrap;gap:.6rem">
+      <strong style="color:#1f1f1f">Katalog YINK - 450 000+ szablonow PPF</strong>
+      <div style="display:flex;gap:.5rem;align-items:center;flex-wrap:wrap">
+        <a href="https://data.yinkglobal.com/" target="_blank" rel="noopener" style="font-size:.85rem;color:#fff;text-decoration:none;padding:.5rem 1rem;background:linear-gradient(135deg,#ff8565,#f0506e);border-radius:8px;font-weight:600">Otworz w nowej karcie &#8599;</a>
+        <button onclick="closeYinkModal()" style="background:#e5e5e5;color:#333;border:0;border-radius:8px;padding:.5rem .9rem;font-weight:600;cursor:pointer;font-family:inherit">Zamknij</button>
       </div>
+    </div>
+    <div id="yink-warn" style="padding:.55rem 1.2rem;background:#fff7ed;border-bottom:1px solid #fed7aa;font-size:.82rem;color:#9a3412;display:none">
+      Jesli widzisz pusty ekran ponizej, certyfikat YINKa jest aktualizowany. Kliknij <strong>"Otworz w nowej karcie"</strong> i zaakceptuj komunikat przegladarki.
     </div>
     <iframe id="yink-iframe" src="" style="flex:1;border:0;width:100%;background:#f8f8f8" title="YINK Templates"></iframe>
   </div>
 </div>
 <script>
-function openYinkModal(){var m=document.getElementById('yink-modal');var f=document.getElementById('yink-iframe');f.src='/yink/';m.style.display='flex';document.body.style.overflow='hidden';}
-function closeYinkModal(){var m=document.getElementById('yink-modal');var f=document.getElementById('yink-iframe');m.style.display='none';f.src='';document.body.style.overflow='';}
+function openYinkModal(){
+  var m=document.getElementById('yink-modal'),f=document.getElementById('yink-iframe'),w=document.getElementById('yink-warn');
+  f.src='https://data.yinkglobal.com/';
+  m.style.display='flex';
+  document.body.style.overflow='hidden';
+  // Pokaz ostrzezenie jesli iframe nie zaladuje sie w 4s (cert problem)
+  var loaded=false;
+  f.onload=function(){loaded=true;w.style.display='none';};
+  setTimeout(function(){if(!loaded)w.style.display='block';},4000);
+}
+function closeYinkModal(){
+  var m=document.getElementById('yink-modal'),f=document.getElementById('yink-iframe'),w=document.getElementById('yink-warn');
+  m.style.display='none';f.src='';w.style.display='none';document.body.style.overflow='';
+}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeYinkModal();});
 </script>
 </body>
