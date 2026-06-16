@@ -1,9 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "prowrap-yink",
+  "main": "src/worker.js",
   "compatibility_date": "2026-06-16",
   "assets": {
     "directory": "./",
+    "binding": "ASSETS",
     "not_found_handling": "404-page"
   }
 }

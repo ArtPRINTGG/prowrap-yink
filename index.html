@@ -104,7 +104,7 @@ footer a:hover { color: var(--pw-salmon); }
       <div class="stat"><span class="num">100%</span><span class="lbl">premium folia</span></div>
     </div>
     <div class="hero-cta">
-      <a href="https://data.yinkglobal.com/" target="_blank" rel="noopener" class="btn btn-primary btn-hero">Przegladaj katalog YINK &rarr;</a>
+      <a href="#" onclick="openYinkModal();return false;" class="btn btn-primary btn-hero">Przegladaj katalog YINK &rarr;</a>
       <a href="mailto:pro@prowrap.pl?subject=Oklejanie%20samochodu" class="btn btn-ghost btn-hero">Skontaktuj sie z nami</a>
     </div>
   </div>
@@ -149,5 +149,23 @@ footer a:hover { color: var(--pw-salmon); }
   </div>
 </footer>
 
+<!-- YINK Modal -->
+<div id="yink-modal" style="display:none;position:fixed;inset:0;background:rgba(31,31,31,.85);z-index:9999;align-items:center;justify-content:center;padding:1rem">
+  <div style="background:#fff;width:100%;max-width:1400px;height:90vh;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.4)">
+    <div style="padding:.8rem 1.2rem;border-bottom:1px solid #e5e5e5;display:flex;justify-content:space-between;align-items:center;background:#fff">
+      <strong style="font-family:Poppins,sans-serif;color:#1f1f1f">Katalog YINK - 450 000+ szablonow PPF</strong>
+      <div style="display:flex;gap:.5rem;align-items:center">
+        <a href="https://data.yinkglobal.com/" target="_blank" rel="noopener" style="font-family:Poppins,sans-serif;font-size:.82rem;color:#666;text-decoration:none;padding:.4rem .8rem;border:1px solid #e5e5e5;border-radius:8px">Otworz w nowej karcie &#8599;</a>
+        <button onclick="closeYinkModal()" style="background:#f0506e;color:#fff;border:0;border-radius:8px;padding:.45rem .85rem;font-weight:700;cursor:pointer;font-family:Poppins,sans-serif">Zamknij</button>
+      </div>
+    </div>
+    <iframe id="yink-iframe" src="" style="flex:1;border:0;width:100%;background:#f8f8f8" title="YINK Templates"></iframe>
+  </div>
+</div>
+<script>
+function openYinkModal(){var m=document.getElementById('yink-modal');var f=document.getElementById('yink-iframe');f.src='/yink/';m.style.display='flex';document.body.style.overflow='hidden';}
+function closeYinkModal(){var m=document.getElementById('yink-modal');var f=document.getElementById('yink-iframe');m.style.display='none';f.src='';document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeYinkModal();});
+</script>
 </body>
 </html>
