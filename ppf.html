@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wyszukiwarka szablonow PPF | Prowrap.eu</title>
+<meta name="description" content="Znajdz szablon PPF dla swojego auta. 450 000+ wzorow do oklejania samochodow, motocykli, ciezarowek.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--pw-salmon:#ff8565;--pw-salmon-light:#ffac97;--pw-pink:#f0506e;--pw-burgundy:#b43a4d;--pw-dark:#1f1f1f;--pw-text:#333;--pw-muted:#6b6b6b;--pw-light:#999;--pw-bg:#f7f7f8;--pw-card:#fff;--pw-border:#e9e9ec;--shadow-md:0 4px 14px rgba(0,0,0,.06);--shadow-lg:0 12px 36px rgba(0,0,0,.10);--shadow-pink:0 10px 30px rgba(240,80,110,.22);--grad-brand:linear-gradient(135deg,#ff8565 0%,#f0506e 100%);--grad-bg:linear-gradient(135deg,#fff5f1 0%,#fff 40%,#fef0ef 100%)}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{font-family:'Poppins',system-ui,-apple-system,sans-serif;color:var(--pw-text);background:var(--pw-bg);-webkit-font-smoothing:antialiased;line-height:1.5}
+body{min-height:100vh;display:flex;flex-direction:column}
+button,input,select{font-family:inherit}
+a{color:var(--pw-salmon);text-decoration:none;transition:color .15s}
+a:hover{color:var(--pw-pink)}
+.topbar{background:rgba(255,255,255,.96);border-bottom:1px solid var(--pw-border);padding:.9rem 1.5rem;position:sticky;top:0;z-index:50;backdrop-filter:blur(8px)}
+.topbar-row{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto;gap:1rem;flex-wrap:wrap}
+.logo-block{display:flex;align-items:center;gap:.85rem}
+.logo-block img{height:42px;width:auto;display:block}
+.logo-block .tagline{font-size:.76rem;color:var(--pw-muted);font-weight:600;letter-spacing:.8px;text-transform:uppercase;padding-left:.85rem;border-left:1px solid var(--pw-border)}
+.topbar-cta{display:flex;gap:.5rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.55rem 1.1rem;border-radius:999px;font-size:.87rem;font-weight:600;text-decoration:none;transition:all .18s;cursor:pointer;border:0;font-family:inherit}
+.btn-primary{background:var(--grad-brand);color:#fff;box-shadow:var(--shadow-pink)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 14px 36px rgba(240,80,110,.28);color:#fff}
+.btn-ghost{background:transparent;color:var(--pw-text);border:1.5px solid var(--pw-border)}
+.btn-ghost:hover{border-color:var(--pw-salmon);color:var(--pw-salmon)}
+.hero{background:var(--grad-bg);padding:3.5rem 1.5rem 2.5rem;border-bottom:1px solid var(--pw-border);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:600px;height:600px;background:radial-gradient(circle,rgba(240,80,110,.08),transparent 70%);border-radius:50%;pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-50%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,133,101,.10),transparent 70%);border-radius:50%;pointer-events:none}
+.hero-inner{max-width:1100px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.eyebrow{display:inline-block;background:rgba(255,255,255,.85);border:1px solid var(--pw-salmon-light);color:var(--pw-burgundy);padding:.35rem .9rem;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin-bottom:1.2rem}
+.eyebrow .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pw-pink);margin-right:.4rem;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:2.85rem;font-weight:800;line-height:1.08;color:var(--pw-dark);margin-bottom:1rem;letter-spacing:-.7px}
+.hero h1 span{background:var(--grad-brand);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:1.08rem;color:var(--pw-muted);max-width:660px;margin:0 auto 2rem;line-height:1.55}
+.search-card{background:#fff;max-width:1100px;margin:0 auto;border-radius:20px;padding:1.6rem;box-shadow:var(--shadow-lg);border:1px solid var(--pw-border);position:relative;z-index:2}
+.search-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:.85rem;margin-bottom:1rem}
+.search-field{display:flex;flex-direction:column;gap:.4rem}
+.search-field label{font-size:.72rem;font-weight:700;color:var(--pw-muted);text-transform:uppercase;letter-spacing:.6px;padding-left:.3rem}
+.search-field select{width:100%;padding:.7rem .85rem;border:1.5px solid var(--pw-border);border-radius:12px;background:#fff;font-size:.92rem;color:var(--pw-text);cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.8' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right .85rem center;padding-right:2rem}
+.search-field select:focus{outline:0;border-color:var(--pw-salmon);box-shadow:0 0 0 4px rgba(255,133,101,.12)}
+.search-field select:disabled{background-color:#f3f3f5;color:#aaa;cursor:not-allowed;opacity:.7}
+.search-actions{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;padding-top:.5rem;border-top:1px dashed var(--pw-border)}
+.search-actions .btn-hero{padding:.9rem 1.8rem;font-size:.96rem}
+.search-info{font-size:.82rem;color:var(--pw-muted);margin-left:auto;display:flex;align-items:center;gap:.4rem}
+.search-info strong{color:var(--pw-burgundy)}
+.brands-quick{padding:2.5rem 1.5rem 1.5rem}
+.brands-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:1.6rem}
+.section-title h2{font-size:1.45rem;font-weight:800;color:var(--pw-dark);margin-bottom:.35rem;letter-spacing:-.3px}
+.section-title p{color:var(--pw-muted);font-size:.92rem}
+.brand-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.85rem}
+.brand-card{background:#fff;border:1px solid var(--pw-border);border-radius:14px;padding:1.1rem .85rem;text-align:center;cursor:pointer;transition:all .2s;position:relative;overflow:hidden}
+.brand-card::after{content:'';position:absolute;inset:0;border-radius:14px;background:var(--grad-brand);opacity:0;transition:opacity .2s;z-index:0}
+.brand-card:hover{transform:translateY(-3px);border-color:transparent;box-shadow:var(--shadow-pink)}
+.brand-card:hover::after{opacity:1}
+.brand-card:hover .brand-logo,.brand-card:hover .brand-name,.brand-card:hover .brand-count{color:#fff;position:relative;z-index:1}
+.brand-card .brand-logo{font-size:1.7rem;font-weight:900;color:var(--pw-dark);letter-spacing:-.5px;margin-bottom:.25rem;position:relative;z-index:1}
+.brand-card .brand-name{font-size:.82rem;font-weight:600;color:var(--pw-text);margin-bottom:.15rem;position:relative;z-index:1}
+.brand-card .brand-count{font-size:.7rem;color:var(--pw-light);font-weight:500;position:relative;z-index:1}
+.results{padding:1rem 1.5rem 3rem;flex:1}
+.results-inner{max-width:1400px;margin:0 auto}
+.results-head{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-bottom:1.2rem;flex-wrap:wrap}
+.results-head h3{font-size:1.2rem;font-weight:700;color:var(--pw-dark)}
+.results-head h3 span{color:var(--pw-salmon)}
+.results-meta{font-size:.82rem;color:var(--pw-muted);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.chip{background:#fff;border:1px solid var(--pw-border);padding:.35rem .8rem;border-radius:999px;font-size:.76rem;font-weight:600;color:var(--pw-text);display:inline-flex;align-items:center;gap:.35rem}
+.chip .x{cursor:pointer;color:var(--pw-light);font-weight:700;margin-left:.2rem}
+.chip .x:hover{color:var(--pw-pink)}
+.results-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.1rem}
+.tpl-card{background:#fff;border:1px solid var(--pw-border);border-radius:16px;overflow:hidden;transition:all .25s;cursor:pointer;display:flex;flex-direction:column}
+.tpl-card:hover{transform:translateY(-4px);border-color:var(--pw-salmon-light);box-shadow:var(--shadow-lg)}
+.tpl-thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#f3f3f5 0%,#e9e9ec 100%);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;color:var(--pw-salmon)}
+.tpl-thumb svg{width:65%;height:auto;opacity:.45}
+.tpl-thumb .badge-new{position:absolute;top:.55rem;left:.55rem;background:var(--grad-brand);col/r:#fff;padding:.2rem .55rem;border-radius:6px;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.tpl-body{padding:.95rem 1rem 1.05rem;flex:1;display:flex;flex-direction:column}
+.tpl-brand{font-size:.68rem;font-weight:700;color:var(--pw-salmon);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.25rem}
+.tpl-name{font-size:.98rem;font-weight:700;color:var(--pw-dark);margin-bottom:.3rem;line-height:1.3}
+.tpl-meta{font-size:.78rem;color:var(--pw-muted);margin-bottom:.85rem;flex:1}
+.tpl-actions{display:flex;gap:.4rem;padding-top:.75rem;border-top:1px solid var(--pw-border)}
+.tpl-actions .btn-sm{flex:1;padding:.5rem;font-size:.78rem}
+.btn-sm{border-radius:8px;font-weight:600;cursor:pointer;border:0;font-family:inherit;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:.3rem}
+.btn-sm.btn-primary{background:var(--grad-brand);color:#fff}
+.btn-sm.btn-primary:hover{color:#fff}
+.btn-sm.btn-ghost{background:var(--pw-bg);color:var(--pw-text);border:1px solid var(--pw-border)}
+.btn-sm.btn-ghost:hover{border-color:var(--pw-salmon);color:var(--pw-salmon)}
+.empty-state{text-align:center;padding:3rem 1rem;color:var(--pw-muted)}
+.empty-state .emoji{font-size:3rem;margin-bottom:.8rem;opacity:.5}
+.empty-state h3{color:var(--pw-dark);font-size:1.1rem;font-weight:700;margin-bottom:.4rem}
+.demo-banner{background:linear-gradient(135deg,#fff7ed 0%,#fef0ef 100%);border:1px solid #fed7aa;border-radius:12px;padding:.85rem 1.1rem;margin:0 auto 1.4rem;max-width:1100px;font-size:.85rem;color:#92400e;display:flex;align-items:center;gap:.6rem}
+.demo-banner strong{color:#9a3412}
+footer{background:var(--pw-dark);color:#aaa;padding:2rem 1.5rem 1.5rem;font-size:.84rem;margin-top:auto}
+.footer-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem}
+.footer-col h4{color:#fff;font-size:.85rem;font-weight:700;margin-bottom:.8rem;text-transform:uppercase;letter-spacing:.8px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:.45rem}
+.footer-col a{color:var(--pw-salmon-light)}
+.footer-bot{border-top:1px solid #333;max-width:1400px;margin:1.5rem auto 0;padding-top:1rem;text-align:center;font-size:.76rem;color:#888}
+@media (max-width:800px){
+  .hero{padding:2.5rem 1rem 2rem}
+  .hero h1{font-size:1.95rem}
+  .hero p.lead{font-size:.96rem}
+  .footer-inner{grid-template-columns:1fr;gap:1.5rem}
+  .search-actions{flex-direction:column;align-items:stretch}
+  .search-info{margin-left:0;justify-content:center}
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-row">
+    <a href="/" class="logo-block" style="text-decoration:none;color:inherit">
+      <img src="/prowrap-logo.png" alt="Prowrap.eu">
+      <span class="tagline">Wyszukiwarka PPF</span>
+    </a>
+    <div class="topbar-cta">
+      <a href="https://prowrap.eu/" target="_blank" rel="noopener" class="btn btn-ghost">Prowrap.eu</a>
+      <a href="mailto:pro@prowrap.pl?subject=Zapytanie%20o%20szablon%20PPF" class="btn btn-primary">Skontaktuj sie</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow"><span class="dot"></span>450 000+ szablonow w bazie</span>
+    <h1>Znajdz <span>szablon PPF</span><br>dla swojego auta</h1>
+    <p class="lead">Najwieksza globalna baza wzorow folii ochronnych. Wybierz marke, model, rok, a my dostarczymy gotowy projekt i okleimy Twoj pojazd w naszej pracowni.</p>
+
+    <div class="search-card">
+      <div class="search-grid">
+        <div class="search-field"><label for="sel-type">Typ pojazdu</label><select id="sel-type"><option value="">Wybierz typ...</option></select></div>
+        <div class="search-field"><label for="sel-brand">Marka</label><select id="sel-brand" disabled><option value="">Najpierw typ</option></select></div>
+        <div class="search-field"><label for="sel-series">Seria</label><select id="sel-series" disabled><option value="">Najpierw marka</option></select></div>
+        <div class="search-field"><label for="sel-model">Model</label><select id="sel-model" disabled><option value="">Najpierw seria</option></select></div>
+        <div class="search-field"><label for="sel-year">Rok</label><select id="sel-year" disabled><option value="">Najpierw model</option></select></div>
+      </div>
+      <div class="search-actions">
+        <button id="btn-search" class="btn btn-primary btn-hero" disabled>Wyszukaj szablony &rarr;</button>
+        <button id="btn-reset" class="btn btn-ghost">Wyczysc</button>
+        <div class="search-info"><strong id="info-count">0</strong>&nbsp;wynikow w bazie</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="brands-quick">
+  <div class="brands-inner">
+    <div class="section-title"><h2>Najpopularniejsze marki</h2><p>Wybierz markowy szybki start</p></div>
+    <div class="brand-grid" id="brand-quick"></div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="results-inner">
+    <div class="demo-banner"><strong>Tryb demo:</strong>&nbsp;wyswietlamy probkowe dane. Po podpieciu API YINK zobaczysz pelna baze 450 000+ szablonow.</div>
+    <div class="results-head">
+      <h3>Wyniki <span id="results-count"></span></h3>
+      <div class="results-meta" id="results-meta"></div>
+    </div>
+    <div id="results-container">
+      <div class="empty-state"><div class="emoji">&#128663;</div><h3>Wybierz typ i marke pojazdu</h3><p>aby zobaczyc dostepne szablony PPF</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Prowrap.eu</h4>
+      <p style="color:#aaa;line-height:1.6">Premium folie ochronne PPF i wzory do oklejania pojazdow. Profesjonalna aplikacja w naszej pracowni w Piszu.</p>
+      <p style="margin-top:.8rem;color:#888;font-size:.78rem">&copy; ADV Group sp. z o.o.<br>NIP: PL7393908555</p>
+    </div>
+    <div class="footer-col">
+      <h4>Kontakt</h4>
+      <ul>
+        <li><a href="mailto:pro@prowrap.pl">pro@prowrap.pl</a></li>
+        <li><a href="tel:+48600825145">+48 600 825 145</a></li>
+        <li style="color:#aaa">Pisz, Jagodna 5</li>
+        <li style="color:#aaa">Warszawa, Nowogrodzka 50</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Linki</h4>
+      <ul>
+        <li><a href="https://prowrap.eu/" target="_blank" rel="noopener">Prowrap.eu</a></li>
+        <li><a href="https://prowrap.eu/regulamin/" target="_blank">Regulamin</a></li>
+        <li><a href="https://www.yinkglobal.com/" target="_blank" rel="noopener">Baza danych: YINK</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">prowrap.eu/ppf &middot; Wersja demonstracyjna &middot; Czerwiec 2026</div>
+</footer>
+
+<script>
+const DATA={types:[{id:'passenger',name:'Samochody osobowe',count:285000},{id:'suv',name:'SUV / Crossover',count:78000},{id:'truck',name:'Ciezarowki',count:24000},{id:'motorcycle',name:'Motocykle',count:52000},{id:'commercial',name:'Dostawcze',count:18000}],brands:{passenger:['BMW','Mercedes-Benz','Audi','Tesla','Porsche','Lexus','Toyota','Honda','Ford','Volkswagen','Skoda','Volvo','Mazda','Hyundai','Kia','Nissan','Renault','Peugeot','Citroen','Opel'],suv:['BMW X','Mercedes GLE','Audi Q','Tesla Model X','Porsche Cayenne','Lexus RX','Toyota RAV4','Honda CR-V','Ford Kuga','Volkswagen Touareg','Skoda Kodiaq','Volvo XC90','Mazda CX-5','Hyundai Tucson','Kia Sorento','Nissan Qashqai'],truck:['Volvo FH','Scania R','MAN TGX','DAF XF','Mercedes Actros','Renault T','Iveco S-WAY'],motorcycle:['Honda CBR','Yamaha R1','Kawasaki Ninja','Suzuki GSX','Ducati Panigale','BMW S1000RR','KTM RC','Aprilia RSV4','Triumph','Harley-Davidson'],commercial:['Mercedes Sprinter','Volkswagen Crafter','Ford Transit','Renault Master','Fiat Ducato','Iveco Daily','Peugeot Boxer']},series:{'passenger|BMW':['1 Series','2 Series','3 Series','4 Series','5 Series','7 Series','8 Series','i3','i4','i8','M2','M3','M4','M5'],'passenger|Tesla':['Model 3','Model S','Model Y (Sedan)','Roadster'],'passenger|Audi':['A1','A3','A4','A5','A6','A7','A8','e-tron GT','RS3','RS4','RS5','RS6','RS7','TT'],'passenger|Mercedes-Benz':['A-Class','B-Class','C-Class','E-Class','S-Class','CLA','CLS','EQS','AMG GT'],'passenger|Porsche':['911','918','Panamera','Taycan','Boxster','Cayman'],'passenger|Toyota':['Corolla','Camry','Yaris','Avensis','Auris','Prius','GR86'],'passenger|Volkswagen':['Golf','Polo','Passat','Arteon','ID.3','ID.4','ID.5','Beetle']},models:{'passenger|BMW|3 Series':['320d Sedan','330i Sedan','M340i xDrive','318d Touring','M3 Competition','330e Hybrid'],'passenger|Tesla|Model 3':['Standard Range Plus','Long Range','Performance','Performance 2024 Refresh'],'passenger|Audi|A4':['30 TDI','35 TFSI','40 TFSI','45 TFSI quattro','S4','RS4 Avant'],'passenger|Porsche|911':['Carrera','Carrera S','Carrera 4S','Turbo','Turbo S','GT3','GT3 RS','GT2 RS'],'passenger|Mercedes-Benz|C-Class':['C200','C220d','C300','C43 AMG','C63 AMG S','C63 AMG Coupe']},years:['2026','2025','2024','2023','2022','2021','2020','2019','2018','2017','2016','2015','2014','2013','2012','2011','2010']};
+const STATE={type:'',brand:'',series:'',model:'',year:''};
+const carSvg='<svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"><path d="M20 70 L25 50 Q30 35 50 32 L90 28 Q115 26 145 30 L165 35 L180 50 L185 70 Z" fill="currentColor"/><circle cx="55" cy="72" r="10" fill="#fff"/><circle cx="55" cy="72" r="7" fill="currentColor"/><circle cx="150" cy="72" r="10" fill="#fff"/><circle cx="150" cy="72" r="7" fill="currentColor"/></svg>';
+const elType=document.getElementById('sel-type'),elBrand=document.getElementById('sel-brand'),elSeries=document.getElementById('sel-series'),elModel=document.getElementById('sel-model'),elYear=document.getElementById('sel-year'),elSearch=document.getElementById('btn-search'),elReset=document.getElementById('btn-reset'),elCount=document.getElementById('info-count'),elResults=document.getElementById('results-container'),elResultsCount=document.getElementById('results-count'),elResultsMeta=document.getElementById('results-meta'),elBrandQuick=document.getElementById('brand-quick');
+function fillSelect(el,items,placeholder,disabled){el.innerHTML='<option value="">'+placeholder+'</option>';items.forEach(function(it){var v=typeof it==='string'?it:it.id,n=typeof it==='string'?it:it.name,c=typeof it==='object'&&it.count?' ('+formatNum(it.count)+')':'';el.innerHTML+='<option value="'+v+'">'+n+c+'</option>';});el.disabled=!!disabled;}
+function formatNum(n){return new Intl.NumberFormat('pl-PL').format(n);}
+function totalCount(){return DATA.types.reduce(function(a,b){return a+b.count;},0);}
+function updateCount(){var n=totalCount();if(STATE.type)n=(DATA.types.find(function(t){return t.id===STATE.type;})||{}).count||0;if(STATE.brand)n=Math.round(n/(DATA.brands[STATE.type]||[]).length);if(STATE.series)n=Math.round(n/8);if(STATE.model)n=Math.round(n/6);if(STATE.year)n=Math.round(n/17);elCount.textContent=formatNum(Math.max(0,n));}
+function loadBrands(){if(!STATE.type){fillSelect(elBrand,[],'Najpierw typ',true);return;}fillSelect(elBrand,DATA.brands[STATE.type]||[],'Wybierz marke...',false);}
+function loadSeries(){if(!STATE.type||!STATE.brand){fillSelect(elSeries,[],'Najpierw marka',true);return;}var list=DATA.series[STATE.type+'|'+STATE.brand];if(!list){fillSelect(elSeries,['Generic A','Generic B','Generic C'],'Wybierz serie...',false);return;}fillSelect(elSeries,list,'Wybierz serie...',false);}
+function loadModels(){if(!STATE.series){fillSelect(elModel,[],'Najpierw seria',true);return;}var list=DATA.models[STATE.type+'|'+STATE.brand+'|'+STATE.series];if(!list){fillSelect(elModel,['Base','Sport','Premium','Limited'],'Wybierz model...',false);return;}fillSelect(elModel,list,'Wybierz model...',false);}
+function loadYears(){if(!STATE.model){fillSelect(elYear,[],'Najpierw model',true);return;}fillSelect(elYear,DATA.years,'Wybierz rok (opcjonalnie)',false);}
+function genTemplates(){var out=[];if(!STATE.type)return out;var brand=STATE.brand||(DATA.brands[STATE.type]||[])[0]||'Generic',seriesList=DATA.series[STATE.type+'|'+brand]||['Series A','Series B','Series C'],series=STATE.series||seriesList[0],modelList=DATA.models[STATE.type+'|'+brand+'|'+series]||['Standard','Sport','Premium','Touring','Performance'],year=STATE.year||'2024';for(var i=0;i<8;i++){var model=modelList[i%modelList.length],newBadge=(i<2);out.push({id:brand.toLowerCase().replace(/\W/g,'_')+'_'+(series.replace(/\W/g,'_'))+'_'+i,brand:brand,series:series,model:model,year:year,isNew:newBadge});}return out;}
+function renderResults(){var ok=STATE.type&&STATE.brand;if(!ok){elResults.innerHTML='<div class="empty-state"><div class="emoji">&#128663;</div><h3>Wybierz typ i marke pojazdu</h3><p>aby zobaczyc dostepne szablony PPF</p></div>';elResultsCount.textContent='';elResultsMeta.innerHTML='';return;}var tpls=genTemplates();elResultsCount.textContent='('+tpls.length+'+ szablonow)';var chips='';if(STATE.type)chips+='<span class="chip">'+(DATA.types.find(function(t){return t.id===STATE.type;})||{}).name+'<span class="x" data-clear="type">&times;</span></span>';if(STATE.brand)chips+='<span class="chip">'+STATE.brand+'<span class="x" data-clear="brand">&times;</span></span>';if(STATE.series)chips+='<span class="chip">'+STATE.series+'<span class="x" data-clear="series">&times;</span></span>';if(STATE.model)chips+='<span class="chip">'+STATE.model+'<span class="x" data-clear="model">&times;</span></span>';if(STATE.year)chips+='<span class="chip">'+STATE.year+'<span class="x" data-clear="year">&times;</span></span>';elResultsMeta.innerHTML=chips;var grid='<div class="results-grid">';tpls.forEach(function(t){grid+='<div class="tpl-card" data-id="'+t.id+'">';grid+='<div class="tpl-thumb">'+(t.isNew?'<span class="badge-new">Nowy</span>':'')+carSvg+'</div>';grid+='<div class="tpl-body"><div class="tpl-brand">'+t.brand+'</div><div class="tpl-name">'+t.series+' &middot; '+t.model+'</div><div class="tpl-meta">Rok '+t.year+' &middot; SKU: '+t.id.toUpperCase()+'</div><div class="tpl-actions"><a href="mailto:pro@prowrap.pl?subject=Zapytanie%20o%20szablon%20'+encodeURIComponent(t.id)+'" class="btn-sm btn-primary">Zapytaj</a><button class="btn-sm btn-ghost" onclick="alert(\'Podglad SKU: '+t.id+'\\n(W pelnej wersji - duza miniatura z YINK API)\')">Podglad</button></div></div></div>';});grid+='</div>';elResults.innerHTML=grid;}
+function clearLevel(k){var keys=['type','brand','series','model','year'],i=keys.indexOf(k);for(var j=i;j<keys.length;j++)STATE[keys[j]]='';elType.value=STATE.type;elBrand.value=STATE.brand;elSeries.value=STATE.series;elModel.value=STATE.model;elYear.value=STATE.year;loadBrands();loadSeries();loadModels();loadYears();updateCount();renderResults();elSearch.disabled=!(STATE.type&&STATE.brand);}
+elType.addEventListener('change',function(){STATE.type=this.value;STATE.brand='';STATE.series='';STATE.model='';STATE.year='';loadBrands();loadSeries();loadModels();loadYears();updateCount();elSearch.disabled=!(STATE.type&&STATE.brand);});
+elBrand.addEventListener('change',function(){STATE.brand=this.value;STATE.series='';STATE.model='';STATE.year='';loadSeries();loadModels();loadYears();updateCount();elSearch.disabled=!(STATE.type&&STATE.brand);if(STATE.type&&STATE.brand)renderResults();});
+elSeries.addEventListener('change',function(){STATE.series=this.value;STATE.model='';STATE.year='';loadModels();loadYears();updateCount();renderResults();});
+elModel.addEventListener('change',function(){STATE.model=this.value;STATE.year='';loadYears();updateCount();renderResults();});
+elYear.addEventListener('change',function(){STATE.year=this.value;updateCount();renderResults();});
+elSearch.addEventListener('click',function(){renderResults();document.querySelector('.results').scrollIntoView({behavior:'smooth',block:'start'});});
+elReset.addEventListener('click',function(){clearLevel('type');});
+document.addEventListener('click',function(e){var c=e.target.closest('[data-clear]');if(c)clearLevel(c.dataset.clear);});
+fillSelect(elType,DATA.types,'Wybierz typ...',false);
+var popularBrands=[{n:'BMW',t:'passenger',count:14200},{n:'Mercedes-Benz',t:'passenger',count:13800},{n:'Audi',t:'passenger',count:12400},{n:'Tesla',t:'passenger',count:5200},{n:'Porsche',t:'passenger',count:4800},{n:'Toyota',t:'passenger',count:18900},{n:'Volkswagen',t:'passenger',count:16500},{n:'Honda',t:'passenger',count:11200}];
+var quickHtml='';popularBrands.forEach(function(b){var initial=b.n[0];quickHtml+='<div class="brand-card" data-brand="'+b.n+'" data-type="'+b.t+'"><div class="brand-logo">'+initial+'</div><div class="brand-name">'+b.n+'</div><div class="brand-count">'+formatNum(b.count)+' szablonow</div></div>';});
+elBrandQuick.innerHTML=quickHtml;
+elBrandQuick.addEventListener('click',function(e){var c=e.target.closest('[data-brand]');if(!c)return;elType.value=c.dataset.type;STATE.type=c.dataset.type;loadBrands();elBrand.value=c.dataset.brand;STATE.brand=c.dataset.brand;loadSeries();loadModels();loadYears();updateCount();elSearch.disabled=false;renderResults();document.querySelector('.results').scrollIntoView({behavior:'smooth',block:'start'});});
+updateCount();
+</script>
+</body>
+</html>
