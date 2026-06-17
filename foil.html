@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Folia 3M 2080 — konfigurator | Prowrap.eu</title>
+<title>Folia 3M 2080 â€” konfigurator | Prowrap.eu</title>
 <meta name="description" content="Folia 3M 2080 na metry. 75 kolorow Gloss/Matte/Satin. Szerokosc 152 cm. Konfigurator z natychmiastowa wycena.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -61,16 +61,24 @@ a { color: var(--pw-pink); text-decoration: none; }
 .color-tabs { display: flex; gap: .35rem; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
 .color-tab { padding: .55rem .9rem; border: 1.5px solid var(--border); background: transparent; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--text-muted); white-space: nowrap; transition: all .15s; }
 .color-tab.active { border-color: var(--pw-pink); color: var(--text); background: rgba(240,80,110,.06); }
-.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: .55rem; max-height: 380px; overflow-y: auto; padding: 4px; scrollbar-width: thin; }
-.color-cell { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .55rem .3rem .4rem; border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: all .15s; background: var(--bg); }
-.color-cell:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
-.color-cell.active { border-color: var(--pw-pink); background: rgba(240,80,110,.05); }
-.color-swatch { width: 54px; height: 54px; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); box-shadow: inset 0 -8px 16px rgba(0,0,0,.18), inset 0 8px 16px rgba(255,255,255,.15); }
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(58px, 1fr)); gap: .4rem; max-height: 380px; overflow-y: auto; padding: 4px; scrollbar-width: thin; }
+.color-cell { display: flex; flex-direction: column; align-items: center; gap: .2rem; padding: 4px; border: 2px solid transparent; border-radius: 8px; cursor: pointer; transition: all .12s; background: transparent; position: relative; }
+.color-cell:hover { border-color: rgba(240,80,110,.4); transform: scale(1.05); }
+.color-cell:hover .color-name-tooltip { opacity: 1; transform: translateY(0); }
+.color-cell.active { border-color: #ff8565; box-shadow: 0 0 0 1px #ff8565; background: rgba(255,133,101,.08); }
+.color-cell.active .color-swatch { transform: scale(.92); }
+.color-swatch { width: 100%; aspect-ratio: 1; border-radius: 6px; border: 1px solid rgba(0,0,0,.12); box-shadow: inset 0 -6px 14px rgba(0,0,0,.18), inset 0 6px 14px rgba(255,255,255,.15); transition: transform .15s; }
+.color-name-tooltip { position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translate(-50%, 4px); background: #1f1f1f; color: #fff; padding: .35rem .6rem; border-radius: 6px; font-size: .72rem; white-space: nowrap; opacity: 0; pointer-events: none; transition: all .15s; z-index: 100; }
+.color-name-tooltip::after { content:""; position: absolute; top: 100%; left: 50%; transform: translateX(-50%); border: 5px solid transparent; border-top-color: #1f1f1f; }
+.color-selected-info { background: var(--bg); border-radius: 10px; padding: .85rem 1rem; margin-top: 1rem; display: flex; align-items: center; gap: .8rem; }
+.color-selected-info .swatch-mini { width: 36px; height: 36px; border-radius: 6px; border: 1px solid rgba(0,0,0,.1); flex-shrink: 0; box-shadow: inset 0 -4px 8px rgba(0,0,0,.15); }
+.color-selected-info .info-text { flex: 1; min-width: 0; }
+.color-selected-info .info-text strong { font-weight: 800; font-size: .9rem; display: block; line-height: 1.2; }
+.color-selected-info .info-text small { color: var(--text-muted); font-size: .75rem; }
 .color-swatch.matte { box-shadow: inset 0 0 24px rgba(0,0,0,.25); }
 .color-swatch.satin { box-shadow: inset 0 -6px 14px rgba(0,0,0,.15), inset 0 6px 14px rgba(255,255,255,.12); }
 .color-swatch.pearl { box-shadow: inset 0 -8px 16px rgba(0,0,0,.18), inset 0 8px 16px rgba(255,255,255,.4); }
-.color-code { font-size: .7rem; font-weight: 700; color: var(--text); line-height: 1; }
-.color-name { font-size: .65rem; color: var(--text-muted); text-align: center; line-height: 1.15; min-height: 1.5em; }
+.color-code, .color-name { display: none; }
 
 /* SLIDER */
 .slider-block { margin-top: 1.4rem; }
@@ -116,8 +124,8 @@ footer a { color: var(--pw-pink); }
   .tagline { font-size: .65rem; padding-left: .55rem; }
   .config { padding: .9rem; }
   .panel { padding: 1.2rem; border-radius: 16px; }
-  .color-swatch { width: 48px; height: 48px; }
-  .color-grid { grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); }
+  .color-grid { grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: .35rem; }
+  .color-cell { padding: 3px; }
   .price-panel { position: static; }
   .price-card { padding: 1.3rem; }
   input[type="range"] { height: 10px; }
@@ -167,6 +175,7 @@ footer a { color: var(--pw-pink); }
         <div class="panel-title" data-i18n="color_title">1. Wybierz kolor folii</div>
         <div class="color-tabs" id="color-tabs"></div>
         <div class="color-grid" id="color-grid"></div>
+        <div class="color-selected-info" id="color-selected-info"></div>
       </div>
 
       <div class="panel slider-block">
@@ -175,12 +184,12 @@ footer a { color: var(--pw-pink); }
           <span class="slider-label" data-i18n="length">D&#322;ugo&#347;&#263;</span>
           <span class="slider-value" id="length-val">200 cm</span>
         </div>
-        <input type="range" id="length-slider" min="10" max="1500" step="10" value="200">
+        <input type="range" id="length-slider" min="10" max="2286" step="10" value="200">
         <div class="slider-marks">
           <span>10 cm</span>
-          <span>500 cm</span>
-          <span>1000 cm</span>
+          <span>5 m</span>
           <span>15 m</span>
+          <span>22,86 m</span>
         </div>
 
         <div class="width-info">
@@ -241,7 +250,7 @@ const PRICE_POINTS = [
   [110,49.99],[120,62.99],[130,65.99],[140,67.99],[150,69.90],[160,79.99],[170,89.99],[180,94.99],[190,97.99],[200,99.90],
   [250,134.89],[300,169.89],[350,199.89],[400,224.89],[450,255.89],[500,279.99],
   [550,339.99],[600,369.99],[650,399.99],[700,429.99],[750,459.99],[800,489.99],
-  [850,589.99],[900,628.99],[950,669.99],[1000,699.99],[1100,749],[1200,799],[1300,839],[1400,879],[1500,919]
+  [850,589.99],[900,628.99],[950,669.99],[1000,699.99],[1100,749],[1200,799],[1300,839],[1400,879],[1500,919],[1750,1019],[2000,1169],[2286,1269.90]
 ];
 
 // 75 kolorow 3M 2080 z hex i finish
@@ -394,6 +403,11 @@ const I18N = {
   }
 };
 
+
+// Popularity scores (10=top, 1=rare) - czarne, biale, srebrne TOP
+const POPULARITY = {'M22':10,'M12':10,'G10B':10,'G212':9,'M212':9,'S12':9,'GP282':8,'G10':8,'M10':8,'S10':7,'G251':9,'M21':9,'M211':7,'M261':7,'S261':6,'S51':6,'M230':6,'G201':7,'G211':6,'G31':5,'G212':9,'G13':7,'G53':7,'G363':6,'G14':5,'G54':6,'G24':5,'G364':5,'M13':6,'S363':4,'SP273':5,'C378':4,'G348':4,'G47':6,'G77':5,'G217':5,'G227':5,'M217':5,'M227':4,'G127':4,'G337':4,'S347':5,'S7':4,'M27':4,'G336':5,'G46':4,'S196':4,'M26':4,'S56':3,'S66':3,'G356':3,'G16':3,'G15':6,'G25':5,'G55':5,'S335':3,'G203':5,'M203':4,'G344':3,'GP240':4,'SP240':3,'SP242':3,'M209':3,'M206':2,'S49':3,'GP272':4,'G79':3,'S327':3,'S238':3,'G377':4,'SP10':4,'G120':2,'S120':2};
+COLORS.forEach(c => { c.pop = POPULARITY[c.c] || 1; });
+
 const STATE = {
   color: COLORS[1], // G10 Gloss White default
   length: 200,
@@ -423,7 +437,7 @@ function fmt(n, lang) {
 }
 function fmtPrice(n, curr, lang) {
   const val = curr === 'EUR' ? n / EUR_RATE : n;
-  const sym = curr === 'EUR' ? '€' : 'zł';
+  const sym = curr === 'EUR' ? 'â‚¬' : 'zĹ‚';
   return fmt(val, lang) + ' ' + sym;
 }
 
@@ -451,12 +465,15 @@ function buildTabs() {
   });
 }
 function buildGrid() {
-  const filtered = COLORS.filter(c => STATE.filter === 'all' || c.f === STATE.filter);
+  const filtered = COLORS.filter(c => STATE.filter === 'all' || c.f === STATE.filter).slice().sort((a,b) => (b.pop||0) - (a.pop||0));
   const grid = document.getElementById('color-grid');
   grid.innerHTML = filtered.map((c, i) => {
     const active = c.c === STATE.color.c ? 'active' : '';
-    return `<div class="color-cell ${active}" data-code="${c.c}"><div class="color-swatch ${c.f}" style="background:${c.h}"></div><div class="color-code">${c.c.replace('B','')}</div><div class="color-name">${c.n}</div></div>`;
+    return `<div class="color-cell ${active}" data-code="${c.c}" title="${c.c.replace('B','')} ${c.n}"><div class="color-swatch ${c.f}" style="background:${c.h}"></div><div class="color-name-tooltip">${c.c.replace('B','')} ${c.n}</div></div>`;
   }).join('');
+  // Render selected info pod gridem
+  const selInfo = document.getElementById('color-selected-info');
+  if (selInfo) { selInfo.innerHTML = `<div class="swatch-mini" style="background:${STATE.color.h}"></div><div class="info-text"><strong>${STATE.color.c.replace('B','')} ${STATE.color.n}</strong><small>${STATE.color.f.toUpperCase()} finish &middot; 3M Series 2080</small></div>`; }
   grid.querySelectorAll('.color-cell').forEach(cell => {
     cell.addEventListener('click', () => {
       STATE.color = COLORS.find(x => x.c === cell.dataset.code);
@@ -477,9 +494,9 @@ function render() {
   document.getElementById('price-total').textContent = fmtPrice(totalPLN, STATE.curr, STATE.lang);
   document.getElementById('price-netto').textContent = fmtPrice(nettoPLN, STATE.curr, STATE.lang);
   document.getElementById('sum-color').textContent = STATE.color.c + ' ' + STATE.color.n;
-  document.getElementById('sum-dim').textContent = L + ' × ' + FOIL_WIDTH + ' cm';
-  document.getElementById('sum-area').textContent = areaM2.toFixed(2).replace('.', STATE.lang==='EN'?'.':',') + ' m²';
-  document.getElementById('sum-unit').textContent = fmtPrice(unitPrice, STATE.curr, STATE.lang) + '/m²';
+  document.getElementById('sum-dim').textContent = L + ' Ă— ' + FOIL_WIDTH + ' cm';
+  document.getElementById('sum-area').textContent = areaM2.toFixed(2).replace('.', STATE.lang==='EN'?'.':',') + ' mÂ˛';
+  document.getElementById('sum-unit').textContent = fmtPrice(unitPrice, STATE.curr, STATE.lang) + '/mÂ˛';
 
   // CTA links
   const t = I18N[STATE.lang];
