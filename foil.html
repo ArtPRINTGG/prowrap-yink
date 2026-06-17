@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+<title>Folia 3M 2080 — konfigurator | Prowrap.eu</title>
+<meta name="description" content="Folia 3M 2080 na metry. 75 kolorow Gloss/Matte/Satin. Szerokosc 152 cm. Konfigurator z natychmiastowa wycena.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --pw-salmon: #ff8565; --pw-pink: #f0506e; --pw-burgundy: #b43a4d;
+  --bg: #f7f7f8; --surface: #fff; --text: #1f1f1f; --text-muted: #6b6b6b; --border: #e5e5e8;
+  --grad-brand: linear-gradient(135deg,#ff8565 0%,#f0506e 100%);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,.04);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.08);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,.15);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1012; --surface: #1a1c1f; --text: #f5f5f6; --text-muted: #b8bcc2; --border: #2a2d31;
+    --shadow-md: 0 8px 24px rgba(0,0,0,.4);
+    --shadow-lg: 0 20px 50px rgba(0,0,0,.6);
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { font-family: 'Poppins', system-ui, sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.5; min-height: 100vh; }
+body { font-size: 16px; }
+button, input, select { font-family: inherit; color: inherit; }
+a { color: var(--pw-pink); text-decoration: none; }
+
+/* TOPBAR */
+.topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: .9rem 1.2rem; position: sticky; top: 0; z-index: 50; }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1280px; margin: 0 auto; gap: .8rem; flex-wrap: wrap; }
+.logo-block { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+.logo-svg { flex-shrink: 0; }
+.tagline { font-size: .72rem; color: var(--text-muted); font-weight: 600; letter-spacing: .8px; text-transform: uppercase; padding-left: .75rem; border-left: 1px solid var(--border); white-space: nowrap; }
+.controls { display: flex; gap: .5rem; align-items: center; flex-wrap: wrap; }
+.toggle-group { display: inline-flex; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 3px; }
+.toggle-btn { padding: .45rem .75rem; border: 0; background: transparent; cursor: pointer; font-weight: 700; font-size: .82rem; border-radius: 7px; color: var(--text-muted); transition: all .15s; }
+.toggle-btn.active { background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-sm); }
+
+/* HERO */
+.hero { padding: 2rem 1.2rem 1rem; background: linear-gradient(135deg, rgba(255,133,101,.07) 0%, transparent 60%); }
+.hero-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+.hero-badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); color: var(--pw-burgundy); padding: .35rem .9rem; border-radius: 999px; font-size: .72rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
+.hero h1 { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -.5px; margin-bottom: .6rem; }
+.hero h1 span { background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero p { color: var(--text-muted); font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 660px; margin: 0 auto; }
+
+/* CONFIGURATOR */
+.config { padding: 1.2rem; }
+.config-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; max-width: 1280px; margin: 0 auto; align-items: start; }
+@media (max-width: 900px) { .config-grid { grid-template-columns: 1fr; } }
+
+.panel { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.4rem; box-shadow: var(--shadow-md); }
+.panel-title { font-size: .9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+
+/* COLOR PICKER */
+.color-tabs { display: flex; gap: .35rem; margin-bottom: 1rem; overflow-x: auto; padding-bottom: 4px; scrollbar-width: thin; }
+.color-tab { padding: .55rem .9rem; border: 1.5px solid var(--border); background: transparent; border-radius: 10px; cursor: pointer; font-weight: 600; font-size: .85rem; color: var(--text-muted); white-space: nowrap; transition: all .15s; }
+.color-tab.active { border-color: var(--pw-pink); color: var(--text); background: rgba(240,80,110,.06); }
+.color-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(85px, 1fr)); gap: .55rem; max-height: 380px; overflow-y: auto; padding: 4px; scrollbar-width: thin; }
+.color-cell { display: flex; flex-direction: column; align-items: center; gap: .35rem; padding: .55rem .3rem .4rem; border: 2px solid transparent; border-radius: 12px; cursor: pointer; transition: all .15s; background: var(--bg); }
+.color-cell:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+.color-cell.active { border-color: var(--pw-pink); background: rgba(240,80,110,.05); }
+.color-swatch { width: 54px; height: 54px; border-radius: 12px; border: 1px solid rgba(0,0,0,.08); box-shadow: inset 0 -8px 16px rgba(0,0,0,.18), inset 0 8px 16px rgba(255,255,255,.15); }
+.color-swatch.matte { box-shadow: inset 0 0 24px rgba(0,0,0,.25); }
+.color-swatch.satin { box-shadow: inset 0 -6px 14px rgba(0,0,0,.15), inset 0 6px 14px rgba(255,255,255,.12); }
+.color-swatch.pearl { box-shadow: inset 0 -8px 16px rgba(0,0,0,.18), inset 0 8px 16px rgba(255,255,255,.4); }
+.color-code { font-size: .7rem; font-weight: 700; color: var(--text); line-height: 1; }
+.color-name { font-size: .65rem; color: var(--text-muted); text-align: center; line-height: 1.15; min-height: 1.5em; }
+
+/* SLIDER */
+.slider-block { margin-top: 1.4rem; }
+.slider-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .8rem; gap: .5rem; flex-wrap: wrap; }
+.slider-label { font-weight: 700; font-size: .95rem; }
+.slider-value { font-size: 1.15rem; font-weight: 800; color: var(--pw-pink); }
+input[type="range"] { -webkit-appearance: none; appearance: none; width: 100%; height: 8px; background: var(--border); border-radius: 8px; outline: none; cursor: pointer; }
+input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 28px; height: 28px; background: var(--grad-brand); border-radius: 50%; cursor: pointer; box-shadow: 0 4px 12px rgba(240,80,110,.45); border: 3px solid var(--surface); transition: transform .15s; }
+input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.1); }
+input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; background: var(--pw-pink); border-radius: 50%; cursor: pointer; border: 3px solid var(--surface); box-shadow: 0 4px 12px rgba(240,80,110,.45); }
+.slider-marks { display: flex; justify-content: space-between; margin-top: .35rem; font-size: .7rem; color: var(--text-muted); padding: 0 4px; }
+
+.width-info { background: var(--bg); border-radius: 12px; padding: .9rem 1rem; margin-top: 1rem; font-size: .9rem; color: var(--text-muted); display: flex; align-items: center; gap: .55rem; }
+.width-info strong { color: var(--text); }
+.width-info svg { color: var(--pw-pink); flex-shrink: 0; }
+
+/* PRICE PANEL */
+.price-panel { position: sticky; top: 96px; }
+.price-card { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 1.6rem; box-shadow: var(--shadow-lg); overflow: hidden; position: relative; }
+.price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad-brand); }
+.price-hero { text-align: center; margin-bottom: 1.4rem; }
+.price-hero .label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; margin-bottom: .35rem; }
+.price-hero .total { font-size: clamp(2.2rem, 7vw, 3rem); font-weight: 900; line-height: 1; letter-spacing: -1px; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.price-hero .netto { font-size: .9rem; color: var(--text-muted); margin-top: .25rem; }
+.summary { background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
+.summary-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; font-size: .92rem; border-bottom: 1px dashed var(--border); }
+.summary-row:last-child { border: 0; }
+.summary-row .key { color: var(--text-muted); font-weight: 600; }
+.summary-row .val { font-weight: 700; }
+.summary-row .val.accent { color: var(--pw-pink); }
+
+.cta-row { display: flex; flex-direction: column; gap: .6rem; }
+.cta-primary { background: var(--grad-brand); color: #fff; border: 0; padding: 1rem 1.2rem; font-size: 1.02rem; font-weight: 800; border-radius: 14px; cursor: pointer; box-shadow: 0 12px 30px rgba(240,80,110,.3); display: flex; align-items: center; justify-content: center; gap: .5rem; transition: all .2s; }
+.cta-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(240,80,110,.4); }
+.cta-secondary { background: var(--bg); color: var(--text); border: 1.5px solid var(--border); padding: .75rem 1.2rem; font-size: .92rem; font-weight: 600; border-radius: 12px; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: .4rem; text-decoration: none; transition: all .15s; }
+.cta-secondary:hover { border-color: var(--pw-pink); color: var(--pw-pink); }
+
+footer { padding: 2rem 1.2rem 1.5rem; text-align: center; font-size: .82rem; color: var(--text-muted); }
+footer a { color: var(--pw-pink); }
+
+@media (max-width: 700px) {
+  .topbar { padding: .75rem .9rem; }
+  .tagline { font-size: .65rem; padding-left: .55rem; }
+  .config { padding: .9rem; }
+  .panel { padding: 1.2rem; border-radius: 16px; }
+  .color-swatch { width: 48px; height: 48px; }
+  .color-grid { grid-template-columns: repeat(auto-fill, minmax(75px, 1fr)); }
+  .price-panel { position: static; }
+  .price-card { padding: 1.3rem; }
+  input[type="range"] { height: 10px; }
+  input[type="range"]::-webkit-slider-thumb { width: 32px; height: 32px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="logo-block">
+      <svg class="logo-svg" width="140" height="34" viewBox="0 0 200 50" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="lg1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ff8565"/><stop offset="100%" stop-color="#f0506e"/></linearGradient></defs>
+        <path d="M5 25 Q5 5 25 5 L40 5 Q45 5 47 9 L42 25 Q40 30 35 30 L20 30 Q15 30 12 28 Z" fill="url(#lg1)"/>
+        <text x="55" y="32" font-family="Poppins,sans-serif" font-size="26" font-weight="900" fill="currentColor" letter-spacing="-0.5">Prowrap</text>
+        <text x="55" y="46" font-family="Poppins,sans-serif" font-size="9" font-weight="700" fill="#b43a4d" letter-spacing="2">.EU</text>
+      </svg>
+      <span class="tagline">3M 2080</span>
+    </div>
+    <div class="controls">
+      <div class="toggle-group" id="lang-toggle">
+        <button class="toggle-btn active" data-lang="PL">PL</button>
+        <button class="toggle-btn" data-lang="DE">DE</button>
+        <button class="toggle-btn" data-lang="EN">EN</button>
+      </div>
+      <div class="toggle-group" id="curr-toggle">
+        <button class="toggle-btn active" data-curr="PLN">PLN</button>
+        <button class="toggle-btn" data-curr="EUR">EUR</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-badge" data-i18n="badge">Folia premium 3M 2080</span>
+    <h1 data-i18n="hero_title">Skonfiguruj <span>foli&#281; 3M 2080</span></h1>
+    <p data-i18n="hero_desc">Premium folia samochodowa 3M Series 2080. 75 kolor&#243;w &middot; szeroko&#347;&#263; 152 cm &middot; ci&#281;cie na wymiar.</p>
+  </div>
+</section>
+
+<section class="config">
+  <div class="config-grid">
+    <div>
+      <div class="panel">
+        <div class="panel-title" data-i18n="color_title">1. Wybierz kolor folii</div>
+        <div class="color-tabs" id="color-tabs"></div>
+        <div class="color-grid" id="color-grid"></div>
+      </div>
+
+      <div class="panel slider-block">
+        <div class="panel-title" data-i18n="length_title">2. D&#322;ugo&#347;&#263; foli (co 10 cm)</div>
+        <div class="slider-header">
+          <span class="slider-label" data-i18n="length">D&#322;ugo&#347;&#263;</span>
+          <span class="slider-value" id="length-val">200 cm</span>
+        </div>
+        <input type="range" id="length-slider" min="10" max="1500" step="10" value="200">
+        <div class="slider-marks">
+          <span>10 cm</span>
+          <span>500 cm</span>
+          <span>1000 cm</span>
+          <span>15 m</span>
+        </div>
+
+        <div class="width-info">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          <span><span data-i18n="width_fixed">Szeroko&#347;&#263; sta&#322;a</span>: <strong>152 cm</strong> &middot; <span data-i18n="roll_full">pe&#322;na rola</span>: 22,86 m</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-panel">
+      <div class="price-card">
+        <div class="price-hero">
+          <div class="label" data-i18n="total_label">cena &#322;&#261;czna</div>
+          <div class="total" id="price-total">139,89 z&#322;</div>
+          <div class="netto" data-i18n="vat_incl">brutto z VAT &middot; <span data-i18n="netto">netto</span>: <span id="price-netto">113,73 z&#322;</span></div>
+        </div>
+
+        <div class="summary">
+          <div class="summary-row"><span class="key" data-i18n="color">Kolor</span><span class="val" id="sum-color">G10 White</span></div>
+          <div class="summary-row"><span class="key" data-i18n="dimensions">Wymiary</span><span class="val" id="sum-dim">200 &#215; 152 cm</span></div>
+          <div class="summary-row"><span class="key" data-i18n="area">Powierzchnia</span><span class="val" id="sum-area">3,04 m&sup2;</span></div>
+          <div class="summary-row"><span class="key" data-i18n="unit_price">Cena za m&sup2;</span><span class="val accent" id="sum-unit">46,02 z&#322;/m&sup2;</span></div>
+        </div>
+
+        <div class="cta-row">
+          <button class="cta-primary" id="btn-order">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12l5 5L20 7"/></svg>
+            <span data-i18n="cta_order">Zam&#243;w teraz</span>
+          </button>
+          <a class="cta-secondary" id="btn-ebay" target="_blank" rel="noopener">
+            <span data-i18n="cta_ebay">Otw&#243;rz na eBay.de</span> &rarr;
+          </a>
+          <a class="cta-secondary" id="btn-allegro" target="_blank" rel="noopener">
+            <span data-i18n="cta_allegro">Otw&#243;rz na Allegro</span> &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  &copy; Prowrap.eu &middot; ADV Group sp. z o.o. &middot;
+  <a href="mailto:pro@prowrap.pl">pro@prowrap.pl</a> &middot;
+  <span data-i18n="material_note">Materia&#322;: 3M Series 2080 oryginalny</span>
+</footer>
+
+<script>
+// ========== CONFIG ==========
+const EUR_RATE = 4.40;
+const VAT_RATE = 0.23;
+const BASE_PRICE = 39.99; // brutto za 10 cm
+const FOIL_WIDTH = 152;
+
+// Cennik z 3M (price difference brutto vs 10cm baseline)
+const PRICE_POINTS = [
+  [10,0],[20,3.99],[30,5.99],[40,7.99],[50,14.29],[60,14.99],[70,19.99],[80,24.99],[90,29.99],[100,47.99],
+  [110,49.99],[120,62.99],[130,65.99],[140,67.99],[150,69.90],[160,79.99],[170,89.99],[180,94.99],[190,97.99],[200,99.90],
+  [250,134.89],[300,169.89],[350,199.89],[400,224.89],[450,255.89],[500,279.99],
+  [550,339.99],[600,369.99],[650,399.99],[700,429.99],[750,459.99],[800,489.99],
+  [850,589.99],[900,628.99],[950,669.99],[1000,699.99],[1100,749],[1200,799],[1300,839],[1400,879],[1500,919]
+];
+
+// 75 kolorow 3M 2080 z hex i finish
+const COLORS = [
+  // Gloss
+  {c:'C378',n:'Gloss Blue Raspberry',h:'#b03060',f:'gloss'},
+  {c:'G10',n:'Gloss White',h:'#ffffff',f:'gloss'},
+  {c:'G10B',n:'Gloss Black',h:'#0a0a0a',f:'gloss'},
+  {c:'G120',n:'Gloss White Aluminum',h:'#c8c8c8',f:'gloss'},
+  {c:'G127',n:'Gloss Boat Blue',h:'#0a3d78',f:'gloss'},
+  {c:'G13',n:'Gloss Hotrod Red',h:'#c81818',f:'gloss'},
+  {c:'G14',n:'Gloss Burnt Orange',h:'#cc4400',f:'gloss'},
+  {c:'G15',n:'Gloss Bright Yellow',h:'#f4dc00',f:'gloss'},
+  {c:'G16',n:'Gloss Light Green',h:'#7ac865',f:'gloss'},
+  {c:'G201',n:'Gloss Anthracite',h:'#2f3438',f:'gloss'},
+  {c:'G203',n:'Gloss Red Metallic',h:'#8a2828',f:'gloss'},
+  {c:'G211',n:'Gloss Charcoal Met.',h:'#2a2c30',f:'gloss'},
+  {c:'G212',n:'Gloss Black Metallic',h:'#1a1a1c',f:'gloss'},
+  {c:'G217',n:'Gloss Deep Blue Met.',h:'#0a2b54',f:'gloss'},
+  {c:'G227',n:'Gloss Blue Metallic',h:'#1c4c80',f:'gloss'},
+  {c:'G24',n:'Gloss Deep Orange',h:'#d44400',f:'gloss'},
+  {c:'G25',n:'Gloss Sunflower',h:'#f4c000',f:'gloss'},
+  {c:'G251',n:'Gloss Sterling Silver',h:'#c0c0c0',f:'gloss'},
+  {c:'G31',n:'Gloss Storm Grey',h:'#5a5e63',f:'gloss'},
+  {c:'G336',n:'Gloss Green Envy',h:'#2a8035',f:'gloss'},
+  {c:'G337',n:'Gloss Blue Fire',h:'#0a4080',f:'gloss'},
+  {c:'G344',n:'Gloss Liquid Copper',h:'#b87333',f:'gloss'},
+  {c:'G348',n:'Gloss Fierce Fuchsia',h:'#d6336c',f:'gloss'},
+  {c:'G356',n:'Gloss Atomic Teal',h:'#20a080',f:'gloss'},
+  {c:'G363',n:'Gloss Dragon Fire Red',h:'#d52d2d',f:'gloss'},
+  {c:'G364',n:'Gloss Fiery Orange',h:'#ee5500',f:'gloss'},
+  {c:'G377',n:'Gloss Comic Blue',h:'#1c69d4',f:'gloss'},
+  {c:'G46',n:'Gloss Kelly Green',h:'#2db04a',f:'gloss'},
+  {c:'G47',n:'Gloss Intense Blue',h:'#003d99',f:'gloss'},
+  {c:'G53',n:'Gloss Flame Red',h:'#d92626',f:'gloss'},
+  {c:'G54',n:'Gloss Bright Orange',h:'#f06c00',f:'gloss'},
+  {c:'G55',n:'Gloss Lucid Yellow',h:'#f4d800',f:'gloss'},
+  {c:'G77',n:'Gloss Sky Blue',h:'#45b0e0',f:'gloss'},
+  {c:'G79',n:'Gloss Light Blue',h:'#6ec3e9',f:'gloss'},
+  {c:'GP240',n:'Gloss White Gold Sparkle',h:'#f0e0c0',f:'pearl'},
+  {c:'GP272',n:'Gloss Midnight Blue',h:'#001230',f:'pearl'},
+  {c:'GP282',n:'Gloss Ember Black',h:'#0d0d0f',f:'pearl'},
+  // Matte
+  {c:'M10',n:'Matte White',h:'#fafafa',f:'matte'},
+  {c:'M12',n:'Matte Black',h:'#0c0c0c',f:'matte'},
+  {c:'M13',n:'Matte Red',h:'#b81a1a',f:'matte'},
+  {c:'M203',n:'Matte Red Metallic',h:'#8a2424',f:'matte'},
+  {c:'M206',n:'Matte Pine Green Met.',h:'#2c4a30',f:'matte'},
+  {c:'M209',n:'Matte Brown Metallic',h:'#4d3520',f:'matte'},
+  {c:'M21',n:'Matte Silver',h:'#b5b5b5',f:'matte'},
+  {c:'M211',n:'Matte Charcoal Met.',h:'#34373a',f:'matte'},
+  {c:'M212',n:'Matte Black Metallic',h:'#1c1c1e',f:'matte'},
+  {c:'M217',n:'Matte Slate Blue Met.',h:'#3a4a60',f:'matte'},
+  {c:'M22',n:'Matte Deep Black',h:'#050505',f:'matte'},
+  {c:'M227',n:'Matte Blue Metallic',h:'#1f3a5c',f:'matte'},
+  {c:'M230',n:'Gray Aluminum',h:'#6a6a6c',f:'matte'},
+  {c:'M26',n:'Matte Military Green',h:'#4a5a35',f:'matte'},
+  {c:'M261',n:'Matte Dark Gray',h:'#353638',f:'matte'},
+  {c:'M27',n:'Matte Indigo',h:'#2a2a4d',f:'matte'},
+  // Satin
+  {c:'S10',n:'Satin White',h:'#f4f4f4',f:'satin'},
+  {c:'S12',n:'Satin Black',h:'#0e0e0e',f:'satin'},
+  {c:'S120',n:'Satin White Aluminum',h:'#cccccc',f:'satin'},
+  {c:'S196',n:'Satin Apple Green',h:'#8bc34a',f:'satin'},
+  {c:'S238',n:'Satin Frozen Berry',h:'#a04a6e',f:'satin'},
+  {c:'S261',n:'Satin Light Dark Gray',h:'#6a6c70',f:'satin'},
+  {c:'S271',n:'Satin Thundercloud',h:'#3a3d40',f:'satin'},
+  {c:'S327',n:'Satin Ocean Shimmer',h:'#4080a0',f:'satin'},
+  {c:'S335',n:'Satin Bitter Yellow',h:'#c8b830',f:'satin'},
+  {c:'S347',n:'Satin Perfect Blue',h:'#1a4f9a',f:'satin'},
+  {c:'S363',n:'Satin Smoldering Red',h:'#a82424',f:'satin'},
+  {c:'S49',n:'Satin Sandstone',h:'#b89b80',f:'satin'},
+  {c:'S51',n:'Satin Battleship Gray',h:'#5e6266',f:'satin'},
+  {c:'S56',n:'Satin Komodo Green',h:'#4a5a30',f:'satin'},
+  {c:'S66',n:'Satin Key West',h:'#20a8c2',f:'satin'},
+  {c:'S7',n:'Satin Lunar Blue',h:'#2c4870',f:'satin'},
+  // Pearl/Sparkle
+  {c:'SP10',n:'Satin Pearl White',h:'#f8f8f8',f:'pearl'},
+  {c:'SP240',n:'Satin Frozen Vanilla',h:'#f0e8cc',f:'pearl'},
+  {c:'SP242',n:'Satin Gold Dust Black',h:'#1a1a1c',f:'pearl'},
+  {c:'SP273',n:'Satin Vampire Red',h:'#5a1818',f:'pearl'}
+];
+
+const I18N = {
+  PL: {
+    badge:'Folia premium 3M 2080',
+    hero_title:'Skonfiguruj <span>foli&#281; 3M 2080</span>',
+    hero_desc:'Premium folia samochodowa 3M Series 2080. 75 kolor&#243;w &middot; szeroko&#347;&#263; 152 cm &middot; ci&#281;cie na wymiar.',
+    color_title:'1. Wybierz kolor folii',
+    length_title:'2. D&#322;ugo&#347;&#263; foli (co 10 cm)',
+    length:'D&#322;ugo&#347;&#263;',
+    width_fixed:'Szeroko&#347;&#263; sta&#322;a',
+    roll_full:'pe&#322;na rola',
+    total_label:'cena &#322;&#261;czna',
+    vat_incl:'brutto z VAT &middot;',
+    netto:'netto',
+    color:'Kolor',
+    dimensions:'Wymiary',
+    area:'Powierzchnia',
+    unit_price:'Cena za m&sup2;',
+    cta_order:'Zam&#243;w teraz',
+    cta_ebay:'Otw&#243;rz na eBay.de',
+    cta_allegro:'Otw&#243;rz na Allegro',
+    material_note:'Materia&#322;: 3M Series 2080 oryginalny',
+    tab_all:'Wszystkie', tab_gloss:'Po&#322;ysk', tab_matte:'Mat', tab_satin:'Satyna', tab_pearl:'Per&#322;a'
+  },
+  DE: {
+    badge:'Premium Folie 3M 2080',
+    hero_title:'Konfiguriere <span>3M 2080 Folie</span>',
+    hero_desc:'Premium Autofolie 3M Series 2080. 75 Farben &middot; Breite 152 cm &middot; Zuschnitt nach Ma&#223;.',
+    color_title:'1. Folienfarbe ausw&#228;hlen',
+    length_title:'2. Folienl&#228;nge (alle 10 cm)',
+    length:'L&#228;nge',
+    width_fixed:'Breite fest',
+    roll_full:'Vollrolle',
+    total_label:'Gesamtpreis',
+    vat_incl:'inkl. MwSt. &middot;',
+    netto:'netto',
+    color:'Farbe',
+    dimensions:'Abmessungen',
+    area:'Fl&#228;che',
+    unit_price:'Preis pro m&sup2;',
+    cta_order:'Jetzt bestellen',
+    cta_ebay:'Auf eBay.de &#246;ffnen',
+    cta_allegro:'Auf Allegro &#246;ffnen',
+    material_note:'Material: 3M Series 2080 Original',
+    tab_all:'Alle', tab_gloss:'Glanz', tab_matte:'Matt', tab_satin:'Satin', tab_pearl:'Perl'
+  },
+  EN: {
+    badge:'Premium 3M 2080 Wrap',
+    hero_title:'Configure <span>3M 2080 Vinyl</span>',
+    hero_desc:'Premium 3M Series 2080 car wrap vinyl. 75 colors &middot; width 152 cm &middot; cut to length.',
+    color_title:'1. Select foil color',
+    length_title:'2. Foil length (every 10 cm)',
+    length:'Length',
+    width_fixed:'Width fixed',
+    roll_full:'full roll',
+    total_label:'total price',
+    vat_incl:'incl. VAT &middot;',
+    netto:'net',
+    color:'Color',
+    dimensions:'Dimensions',
+    area:'Area',
+    unit_price:'Price per m&sup2;',
+    cta_order:'Order now',
+    cta_ebay:'Open on eBay.de',
+    cta_allegro:'Open on Allegro',
+    material_note:'Material: 3M Series 2080 original',
+    tab_all:'All', tab_gloss:'Gloss', tab_matte:'Matte', tab_satin:'Satin', tab_pearl:'Pearl'
+  }
+};
+
+const STATE = {
+  color: COLORS[1], // G10 Gloss White default
+  length: 200,
+  filter: 'all',
+  lang: 'PL',
+  curr: 'PLN'
+};
+
+// ========== PRICE LOGIC ==========
+function priceForLength(L) {
+  // interpolate on PRICE_POINTS
+  let lo = PRICE_POINTS[0], hi = PRICE_POINTS[PRICE_POINTS.length-1];
+  for (let i = 0; i < PRICE_POINTS.length - 1; i++) {
+    if (L >= PRICE_POINTS[i][0] && L <= PRICE_POINTS[i+1][0]) {
+      lo = PRICE_POINTS[i]; hi = PRICE_POINTS[i+1]; break;
+    }
+  }
+  const range = hi[0] - lo[0];
+  const t = range === 0 ? 0 : (L - lo[0]) / range;
+  const priceDiff = lo[1] + t * (hi[1] - lo[1]);
+  return BASE_PRICE + priceDiff;
+}
+
+function fmt(n, lang) {
+  const locale = lang === 'DE' ? 'de-DE' : (lang === 'EN' ? 'en-US' : 'pl-PL');
+  return new Intl.NumberFormat(locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+}
+function fmtPrice(n, curr, lang) {
+  const val = curr === 'EUR' ? n / EUR_RATE : n;
+  const sym = curr === 'EUR' ? '€' : 'zł';
+  return fmt(val, lang) + ' ' + sym;
+}
+
+// ========== I18N ==========
+function applyI18N() {
+  const t = I18N[STATE.lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key]) el.innerHTML = t[key];
+  });
+  document.documentElement.lang = STATE.lang.toLowerCase();
+  // Update tabs
+  document.querySelectorAll('.color-tab').forEach(tab => {
+    tab.textContent = t['tab_' + tab.dataset.filter];
+  });
+}
+
+// ========== COLOR PICKER ==========
+function buildTabs() {
+  const tabs = ['all', 'gloss', 'matte', 'satin', 'pearl'];
+  const cont = document.getElementById('color-tabs');
+  cont.innerHTML = tabs.map(t => `<button class="color-tab ${STATE.filter===t?'active':''}" data-filter="${t}">${I18N[STATE.lang]['tab_'+t]}</button>`).join('');
+  cont.querySelectorAll('.color-tab').forEach(b => {
+    b.addEventListener('click', () => { STATE.filter = b.dataset.filter; buildTabs(); buildGrid(); });
+  });
+}
+function buildGrid() {
+  const filtered = COLORS.filter(c => STATE.filter === 'all' || c.f === STATE.filter);
+  const grid = document.getElementById('color-grid');
+  grid.innerHTML = filtered.map((c, i) => {
+    const active = c.c === STATE.color.c ? 'active' : '';
+    return `<div class="color-cell ${active}" data-code="${c.c}"><div class="color-swatch ${c.f}" style="background:${c.h}"></div><div class="color-code">${c.c.replace('B','')}</div><div class="color-name">${c.n}</div></div>`;
+  }).join('');
+  grid.querySelectorAll('.color-cell').forEach(cell => {
+    cell.addEventListener('click', () => {
+      STATE.color = COLORS.find(x => x.c === cell.dataset.code);
+      buildGrid(); render();
+    });
+  });
+}
+
+// ========== RENDER ==========
+function render() {
+  const L = STATE.length;
+  const totalPLN = priceForLength(L);
+  const nettoPLN = totalPLN / (1 + VAT_RATE);
+  const areaM2 = (L / 100) * (FOIL_WIDTH / 100);
+  const unitPrice = totalPLN / areaM2;
+
+  document.getElementById('length-val').textContent = L + ' cm' + (L >= 100 ? ' (' + (L/100).toFixed(2) + ' m)' : '');
+  document.getElementById('price-total').textContent = fmtPrice(totalPLN, STATE.curr, STATE.lang);
+  document.getElementById('price-netto').textContent = fmtPrice(nettoPLN, STATE.curr, STATE.lang);
+  document.getElementById('sum-color').textContent = STATE.color.c + ' ' + STATE.color.n;
+  document.getElementById('sum-dim').textContent = L + ' × ' + FOIL_WIDTH + ' cm';
+  document.getElementById('sum-area').textContent = areaM2.toFixed(2).replace('.', STATE.lang==='EN'?'.':',') + ' m²';
+  document.getElementById('sum-unit').textContent = fmtPrice(unitPrice, STATE.curr, STATE.lang) + '/m²';
+
+  // CTA links
+  const t = I18N[STATE.lang];
+  const subj = encodeURIComponent('Zamowienie folia 3M 2080: ' + STATE.color.c + ' ' + STATE.color.n + ' ' + L + 'x152 cm');
+  const body = encodeURIComponent('Folia: 3M 2080 ' + STATE.color.c + ' ' + STATE.color.n + '\nWymiary: ' + L + ' x 152 cm (' + areaM2.toFixed(2) + ' m2)\nCena: ' + fmtPrice(totalPLN, STATE.curr, STATE.lang) + ' brutto');
+  document.getElementById('btn-order').onclick = () => { window.location.href = 'mailto:pro@prowrap.pl?subject=' + subj + '&body=' + body; };
+
+  // Marketplace deep links - eBay search with our params, Allegro create offer
+  const ebayQuery = encodeURIComponent('3M 2080 ' + STATE.color.c + ' ' + L + 'cm');
+  document.getElementById('btn-ebay').href = 'https://www.ebay.de/sch/i.html?_nkw=' + ebayQuery;
+  const allegroQuery = encodeURIComponent('folia 3M 2080 ' + STATE.color.c);
+  document.getElementById('btn-allegro').href = 'https://allegro.pl/listing?string=' + allegroQuery;
+}
+
+// ========== LANG / CURRENCY ==========
+function bindToggles() {
+  document.querySelectorAll('#lang-toggle .toggle-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      STATE.lang = b.dataset.lang;
+      document.querySelectorAll('#lang-toggle .toggle-btn').forEach(x => x.classList.toggle('active', x === b));
+      applyI18N(); buildTabs(); render();
+    });
+  });
+  document.querySelectorAll('#curr-toggle .toggle-btn').forEach(b => {
+    b.addEventListener('click', () => {
+      STATE.curr = b.dataset.curr;
+      document.querySelectorAll('#curr-toggle .toggle-btn').forEach(x => x.classList.toggle('active', x === b));
+      render();
+    });
+  });
+}
+
+// ========== INIT ==========
+function autoDetectLang() {
+  const nav = (navigator.language || 'pl').toLowerCase();
+  if (nav.startsWith('de')) STATE.lang = 'DE';
+  else if (nav.startsWith('en')) STATE.lang = 'EN';
+  else STATE.lang = 'PL';
+  document.querySelectorAll('#lang-toggle .toggle-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === STATE.lang));
+}
+
+autoDetectLang();
+applyI18N();
+buildTabs();
+buildGrid();
+bindToggles();
+document.getElementById('length-slider').addEventListener('input', e => { STATE.length = +e.target.value; render(); });
+render();
+</script>
+
+</body>
+</html>

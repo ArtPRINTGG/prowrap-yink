@@ -5,6 +5,9 @@ export default {
     if (url.pathname === "/ppf" || url.pathname === "/ppf/") {
       return env.ASSETS.fetch(new Request(new URL("/ppf.html", url), request));
     }
+    if (url.pathname === "/foil" || url.pathname === "/foil/") {
+      return env.ASSETS.fetch(new Request(new URL("/foil.html", url), request));
+    }
     if (url.pathname === "/yink" || url.pathname.startsWith("/yink/")) {
       const tail = url.pathname === "/yink" ? "/" : url.pathname.slice(5);
       const targetUrl = YINK + tail + url.search;
