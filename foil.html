@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-<title>Folia 3M 2080 Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„â€ž konfigurator | Prowrap.eu</title>
+<title>Folia 3M 2080 Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€žĂ˘â‚¬Ĺľ konfigurator | Prowrap.eu</title>
 <meta name="description" content="Folia 3M 2080 na metry. 75 kolorow Gloss/Matte/Satin. Szerokosc 152 cm. Konfigurator z natychmiastowa wycena.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,6 +29,7 @@
   }
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg); }
 html, body { font-family: 'Poppins', system-ui, sans-serif; color: var(--text); background: var(--bg); -webkit-font-smoothing: antialiased; line-height: 1.5; min-height: 100vh; }
 body { font-size: 16px; }
 button, input, select { font-family: inherit; color: inherit; }
@@ -50,13 +51,13 @@ a { color: var(--pw-blue-accent); text-decoration: none; }
 .hero-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
 .hero-badge { display: inline-block; background: var(--surface); border: 1px solid var(--border); color: var(--pw-blue-3); padding: .35rem .9rem; border-radius: 999px; font-size: .72rem; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; margin-bottom: 1rem; box-shadow: var(--shadow-sm); }
 .hero h1 { font-size: clamp(1.7rem, 5vw, 2.6rem); font-weight: 800; line-height: 1.1; letter-spacing: -.5px; margin-bottom: .6rem; }
-.hero h1 span { background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero h1 span { background: linear-gradient(135deg,#3b82f6 0%,#1d4ed8 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero p { color: var(--text-muted); font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 660px; margin: 0 auto; }
 
 /* CONFIGURATOR */
 .config { padding: 1.2rem; }
 .config-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 1.4rem; max-width: 1280px; margin: 0 auto; align-items: start; }
-@media (max-width: 900px) { .config-grid { grid-template-columns: 1fr; } }
+@media (max-width: 1024px) { .config-grid { grid-template-columns: 1fr; } .price-panel { position: static; } }
 
 .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 18px; padding: 1.4rem; box-shadow: var(--shadow-md); }
 .panel-title { font-size: .9rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
@@ -71,10 +72,9 @@ a { color: var(--pw-blue-accent); text-decoration: none; }
 .color-grid::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 .color-grid::-webkit-scrollbar-thumb:hover { background: var(--pw-blue-1); }
 .color-cell { flex: 0 0 110px; display: flex; flex-direction: column; gap: .5rem; padding: .55rem; border: 2px solid var(--border); border-radius: 10px; cursor: pointer; transition: all .15s; background: var(--surface); scroll-snap-align: start; position: relative; }
-.color-cell:hover { border-color: rgba(37,99,235,.4); transform: scale(1.05); }
-.color-cell:hover .color-name-tooltip { opacity: 1; transform: translateY(0); }
-.color-cell.active { border-color: #ff8565; box-shadow: 0 0 0 1px #ff8565; background: rgba(255,133,101,.08); }
-.color-cell.active .color-swatch { transform: scale(.92); }
+.color-cell:hover { border-color: var(--pw-blue-1); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.color-cell.active { border-color: var(--pw-blue-accent); box-shadow: 0 0 0 3px var(--pw-blue-light), var(--shadow-md); }
+.color-cell.active::after { content: ""; position: absolute; top: 6px; right: 6px; width: 22px; height: 22px; background: var(--pw-blue-accent); color: #fff; border-radius: 50%; box-shadow: 0 2px 6px rgba(37,99,235,.4); }
 .color-swatch { width: 100%; aspect-ratio: 1; border-radius: 8px; border: 3px solid #fff; outline: 1px solid var(--border); box-shadow: inset 0 -8px 18px rgba(0,0,0,.22), inset 0 8px 18px rgba(255,255,255,.2), 0 2px 6px rgba(0,0,0,.08); transition: transform .15s; }
 .color-name-tooltip { display: none; }
 .color-selected-info { background: var(--bg); border-radius: 10px; padding: .85rem 1rem; margin-top: 1rem; display: flex; align-items: center; gap: .8rem; }
@@ -109,7 +109,7 @@ input[type="range"]::-moz-range-thumb { width: 28px; height: 28px; background: v
 .price-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--grad-brand); }
 .price-hero { text-align: center; margin-bottom: 1.4rem; }
 .price-hero .label { font-size: .8rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.2px; font-weight: 700; margin-bottom: .35rem; }
-.price-hero .total { font-size: clamp(2.2rem, 7vw, 3rem); font-weight: 900; line-height: 1; letter-spacing: -1px; background: var(--grad-brand); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.price-hero .total { font-size: clamp(2.2rem, 7vw, 3rem); font-weight: 900; line-height: 1; letter-spacing: -1px; background: linear-gradient(135deg,#2563eb 0%,#1e3a8a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .price-hero .netto { font-size: .9rem; color: var(--text-muted); margin-top: .25rem; }
 .summary { background: var(--bg); border-radius: 14px; padding: 1rem 1.1rem; margin-bottom: 1rem; }
 .summary-row { display: flex; justify-content: space-between; align-items: center; padding: .45rem 0; font-size: .92rem; border-bottom: 1px dashed var(--border); }
@@ -129,14 +129,22 @@ footer a { color: var(--pw-blue-accent); }
 
 @media (max-width: 700px) {
   .topbar { padding: .75rem .9rem; }
+  .topbar-inner { gap: .5rem; }
+  .logo-block { gap: .55rem; }
   .tagline { font-size: .65rem; padding-left: .55rem; }
-  .config { padding: .9rem; }
-  .panel { padding: 1.2rem; border-radius: 16px; }
+  .controls { width: 100%; justify-content: flex-end; }
+  .config { padding: .8rem .7rem; }
+  .config-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .panel { padding: 1.1rem 1rem; border-radius: 14px; }
+  .hero { padding: 1.5rem 1rem 1.2rem; }
   .color-cell { flex: 0 0 100px; padding: .5rem; }
   .price-panel { position: static; }
-  .price-card { padding: 1.3rem; }
+  .price-card { padding: 1.3rem 1.1rem; }
+  .summary-row { font-size: .88rem; }
   input[type="range"] { height: 10px; }
   input[type="range"]::-webkit-slider-thumb { width: 32px; height: 32px; }
+  .cta-primary { padding: .9rem 1.1rem; font-size: .98rem; }
+  .cta-secondary { padding: .7rem 1rem; font-size: .88rem; }
 }
 </style>
 </head>
@@ -212,7 +220,7 @@ footer a { color: var(--pw-blue-accent); }
           <div class="label" data-i18n="total_label">cena &#322;&#261;czna</div>
           <div class="total" id="price-total">139,89 z&#322;</div>
           <div class="netto" data-i18n="vat_incl">brutto z VAT &middot; <span data-i18n="netto">netto</span>: <span id="price-netto">32,51 z&#322;</span></div>
-          <div id="discount-badge" style="display:none;margin-top:.6rem;background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:.4rem .9rem;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.6px;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(16,185,129,.3)">&minus;10% RABAT za pe&#322;n&#261; rol&#281;</div>
+          <div id="discount-badge" style="display:none;margin-top:.6rem;background:linear-gradient(135deg,#10b981,#059669);color:#fff;padding:.45rem 1rem;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.6px;box-shadow:0 4px 12px rgba(16,185,129,.3)">&minus;10% RABAT za pe&#322;n&#261; rol&#281;</div>
         </div>
 
         <div class="summary">
@@ -450,7 +458,7 @@ function fmt(n, lang) {
 }
 function fmtPrice(n, curr, lang) {
   const val = curr === 'EUR' ? n / EUR_RATE : n;
-  const sym = curr === 'EUR' ? 'Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇĂ„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' : 'zĂ„â€šĂ˘â‚¬ĹľÄ‚â€žĂ˘â‚¬Â¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇ';
+  const sym = curr === 'EUR' ? 'Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚ÂÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬ĹˇÄ‚â€šĂ‚Â¬' : 'zÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬Ă‚Â¦Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ä‚â€žĂ„â€¦Ä‚â€ąĂ˘â‚¬Ë‡';
   return fmt(val, lang) + ' ' + sym;
 }
 
@@ -507,9 +515,9 @@ function render() {
   document.getElementById('price-total').textContent = fmtPrice(totalPLN, STATE.curr, STATE.lang);
   document.getElementById('price-netto').textContent = fmtPrice(nettoPLN, STATE.curr, STATE.lang);
   document.getElementById('sum-color').textContent = STATE.color.c + ' ' + STATE.color.n;
-  document.getElementById('sum-dim').textContent = L + ' Ă„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ä‚ËĂ˘â€šÂ¬ÄąÄ„ ' + FOIL_WIDTH + ' cm';
-  document.getElementById('sum-area').textContent = areaM2.toFixed(2).replace('.', STATE.lang==='EN'?'.':',') + ' mÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬ÄąĹş';
-  document.getElementById('sum-unit').textContent = fmtPrice(unitPrice, STATE.curr, STATE.lang) + '/mÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ˘â‚¬Ä…Ä‚ËĂ˘â€šÂ¬ÄąĹş';
+  document.getElementById('sum-dim').textContent = L + ' Ä‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬ÄąÄľĂ„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă„â€ž ' + FOIL_WIDTH + ' cm';
+  document.getElementById('sum-area').textContent = areaM2.toFixed(2).replace('.', STATE.lang==='EN'?'.':',') + ' mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź';
+  document.getElementById('sum-unit').textContent = fmtPrice(unitPrice, STATE.curr, STATE.lang) + '/mĂ„â€šĂ˘â‚¬ĹľÄ‚ËĂ˘â€šÂ¬ÄąË‡Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…Ă‹â€ˇÄ‚â€žĂ˘â‚¬ĹˇÄ‚ËĂ˘â€šÂ¬Ă„â€¦Ă„â€šĂ‹ÂÄ‚ËĂ˘â‚¬ĹˇĂ‚Â¬Ă„Ä…ÄąĹź';
 
   // CTA links
   const t = I18N[STATE.lang];
